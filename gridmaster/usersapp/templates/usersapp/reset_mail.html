@@ -1,0 +1,30 @@
+{% extends 'usersapp/layout_usersapp.html' %}
+{% load static %}
+{% block content %}
+<div class="reset">
+    <div class='reset__header'>
+        <div class="logo">
+            <div class="logo__icon">
+                <img src="{% static 'usersapp/imgs/logo_set.svg' %}" alt="icon">
+            </div>
+            <div class="logo__text">
+                <span>GRIDMASTER</span>
+                <span>IDE</span>
+            </div>
+        </div>
+        <div class="reset__title">Reset</div>
+    </div>
+
+    <div class="reset__main">
+        <div class="reset__text">Enter the email from your <br>account</div>
+        <div class="reset__input-wrapper">
+            <span>Email:</span>
+            <input type="text" placeholder="Email">
+        </div>
+        <div class="buttons-wrapper">
+            <button class='button-continue'>Continue</button>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

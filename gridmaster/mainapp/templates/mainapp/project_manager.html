@@ -1,0 +1,151 @@
+{% extends 'mainapp/layout_mainapp.html' %}
+{% load static %}
+{% block content %}
+
+<div class="main-title">
+    <span class="main-title__category">Project Manager</span>
+    <div class="line"></div>
+    <span class="main-title__name">IntSquad</span>
+</div>
+
+<div class="menu">
+    <div class="files">
+        <div class="files__title">My files</div>
+        <form class='files__table-wrapper'>
+            <table>
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>name</td>
+                        <td>date</td>
+                        <td>about</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>algorithm_beta_01</td>
+                        <td>24.10.23</td>
+                        <td>project for school competition</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Lorem</td>
+                        <td>13.12.24</td>
+                        <td>Lorem, ipsum dolor.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Lorem</td>
+                        <td>13.12.24</td>
+                        <td>Lorem ipsum dolor sit.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Lorem</td>
+                        <td>13.12.24</td>
+                        <td>Lorem, ipsum dolor.</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Lorem</td>
+                        <td>13.12.24</td>
+                        <td>Lorem ipsum dolor sit amet.</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Lorem</td>
+                        <td>13.12.24</td>
+                        <td>Lorem, ipsum dolor.</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Lorem</td>
+                        <td>13.12.24</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Lorem</td>
+                        <td>13.12.24</td>
+                        <td>Lorem ipsum, dolor sit amet consectetur adipisicing.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <div class="files__buttons">
+            <div class="files__create">
+                <img src="{% static 'mainapp/imgs/create.svg' %}" alt="">
+                <span>Create new file...</span>
+            </div>
+            <div class="files__import">
+                <img src="{% static 'mainapp/imgs/import.svg' %}" alt="">
+                <span>Import file...</span>
+            </div>
+            <div class="files__examples">
+                <img src="{% static 'mainapp/imgs/examples.svg' %}" alt="">
+                <span>Examples</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="preview">
+        <div class="preview__title">Title</div>
+        <form class="preview__info">
+            <img src="{% static 'mainapp/imgs/code_preview.png' %}" alt="" class="preview__code">
+            <div class="preview__code-info">
+                <span class='preview__about'>Лялялялял проекты я душнилка</span>
+                <span class='preview__edit'>Last edit: <span class="preview__date">23.12.23</span></span>
+                <span class='preview__size'>Size: 1034 Kb</span>
+                <div class="preview__code-result">
+                    <img src="{% static 'mainapp/imgs/preview.png' %}">
+                    <img src="{% static 'mainapp/imgs/grid_preview.png' %}" alt="">
+                </div>
+            </div>
+        </form>
+        <div class="preview__buttons">
+            <button class="preview__edit">Edit</button>
+            <button class="preview__load">Load</button>
+            <button class="preview__copy">Copy</button>
+            <button class="preview__delete">Delete</button>
+        </div>
+    </div>
+
+    <div class="tip">
+
+        <div class="tip__title">Tip of the <br> day <img src="{% static 'mainapp/imgs/tip.svg' %}"></div>
+        <form class='tip__wrapper'>
+            <div class="tip__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae natus
+                deserunt
+                sit.</div>
+            <div class='tip__code'>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="cloud">
+        <div class="cloud__title">Account <br> cloud <span><img src="{% static 'mainapp/imgs/cloud.svg' %}"></span>
+        </div>
+        <div class="cloud__info">
+
+            <div class="cloud__diagram">
+                <canvas id='diagram' height='500' width="500"></canvas>
+                <div class="cloud__procent"></div>
+            </div>
+
+            <div class='cloud__text'>
+                <div>
+                    There is <span class='procent'>20</span>% free space left in your account's cloud (<span
+                        class='memory'>~1.5 Mb</span>)
+                </div>
+                <div class='cloud__upgrade'>
+                    Get upgrade to your account: <span>click here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

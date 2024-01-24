@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шаблон</title>
+
+    <link rel="stylesheet" href="{% static 'mainapp/css/code.css' %}">
+    <link rel="stylesheet" href="{% static 'mainapp/css/main.css' %}">
+    <link rel="icon" href="{% static 'mainapp/imgs/logo_set.svg' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script defer src="{% static 'mainapp/js/code.js' %}"></script>
+    <script defer src="{% static 'mainapp/js/template.js' %}"></script>
+    <script defer src="{% static 'mainapp/js/main.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo__icon">
+                <img src="{% static 'mainapp/imgs/logo_set.svg' %}" alt="icon">
+            </div>
+            <div class="logo__text">
+                <span>GRIDMASTER</span>
+                <span>IDE</span>
+            </div>
+        </div>
+
+        <div class="account-menu">
+            <section class='account-menu__wrapper' onclick="userMenuToggle(this)">
+                <div class='account-menu__us-wrap'>
+                    <div class="account-menu__user">
+                        <img class='account-menu__avatar' src="{% static 'mainapp/imgs/user_icon.png' %}" alt="userIcon">
+                        <div class='account-menu__dots'>
+                            <img src="{% static 'mainapp/imgs/circles.png' %}">
+                        </div>
+                        <span class='account-menu__name invisible'>IntSquad</span>
+                    </div>
+                </div>
+
+                <div class="account-menu__main invisible">
+                    <div class="account-menu__icons">
+                        <img src="{% static 'mainapp/imgs/globus.svg' %}" alt="">
+                        <img src="{% static 'mainapp/imgs/light.svg' %}" alt="">
+                    </div>
+                    <div class="account-menu__settings">
+                        <span onclick="event.stopPropagation()">Account <br>settings</span>
+                        <span onclick="event.stopPropagation()">Site <br>settings</span>
+                    </div>
+                    <div class="account-menu__logout" onclick="event.stopPropagation()">
+                        <span>Logout</span>
+                        <img src="{% static 'mainapp/imgs/logout.svg' %}" alt="">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </header>
+    <main>
+        {% block content %}
+        <!-- CONTENT INCLUDE -->
+        {% endblock %}
+    </main>
+ 
+    <footer>
+        <div class="contact">
+            <span class='footer-title'>Contact info</span>
+            <div class="line"></div>
+            <span class='footer-info'>mail: intsquad@gmail.com</span>
+            <span class='footer-info'>num: +7 (777) - 77 - 77</span>
+        </div>
+
+        <div class="etc">
+            <span class="footer-title">Etc</span>
+            <div class="line"></div>
+            <span class='footer-info'>Hotline</span>
+            <span class='footer-info'>Documentations</span>
+        </div>
+    </footer>
+
+    
+</body>
+
+</html>

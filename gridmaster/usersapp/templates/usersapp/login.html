@@ -1,0 +1,39 @@
+{% extends 'usersapp/layout_usersapp.html' %}
+{% load static %}
+{% block content %}
+<div class="login">
+    <div class='login__header'>
+        <div class="logo">
+            <div class="logo__icon">
+                <img src="{% static 'usersapp/imgs/logo_set.svg' %}" alt="icon">
+            </div>
+            <div class="logo__text">
+                <span>GRIDMASTER</span>
+                <span>IDE</span>
+            </div>
+        </div>
+        <div class="login__title">Login</div>
+    </div>
+
+    <div class="login__main">
+        <div class="login__input-wrapper">
+            <span>Email:</span>
+            <input type="text" placeholder="Email">
+        </div>
+        <div class="login__input-wrapper">
+            <span>Password:</span>
+            <input type="password" placeholder="Password">
+        </div>
+        <div class="buttons-wrapper">
+            <button class='button-continue'>Continue</button>
+            <span>or</span>
+            <button class='button-registration'>Registration</button>
+        </div>
+    </div>
+
+    <div class="login__footer">
+        <div class="login__forgot">Forgot password?</div>
+    </div>
+</div>
+{% endblock %}
+ 

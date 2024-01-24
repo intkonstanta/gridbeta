@@ -1,0 +1,335 @@
+@import './template.css';
+::-webkit-scrollbar {
+  background-color: #4D4D4D;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(168, 168, 168, 0.82);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168, 168, 168, 0.82) #4D4D4D;
+}
+
+.editor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.29375rem;
+}
+.editor section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 0.29375rem;
+  height: 25rem;
+  overflow: hidden;
+  border-radius: 0.625rem;
+}
+
+.editor__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 0.8rem;
+  width: 2.35rem;
+  gap: 8.125rem;
+  background-color: #3C3A48;
+  border-radius: 0.625rem;
+}
+
+.editor__buttons-code,
+.editor__buttons-save {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.editor__buttons-code img {
+  width: 1rem;
+  height: 1.15rem;
+}
+
+.editor__buttons-save img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.editor__wrapper {
+  width: 43.64rem;
+  height: 25rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 0.625rem;
+  background-color: #25232F;
+  scrollbar-width: none;
+}
+
+.editor__wrapper::-webkit-scrollbar {
+  width: 0px;
+  border-top-right-radius: 0.625rem;
+  border-bottom-right-radius: 0.625rem;
+}
+
+.editor__code {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 43.64rem;
+  height: 25rem;
+  overflow-y: scroll;
+  overflow-x: auto;
+  background-color: #25232F;
+  border-radius: 0.625rem;
+  scrollbar-width: thin;
+}
+
+.editor__code-numrows {
+  width: 4rem;
+  color: rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+}
+.editor__code-numrows div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: "Roboto Mono", monospace;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+  width: 100%;
+  height: 1.5rem;
+  font-size: 0.9rem;
+}
+.editor__code-numrows .active {
+  color: #EDECEE;
+}
+
+.editor__code {
+  padding-top: 2.5rem;
+}
+.editor__code textarea {
+  background-color: #25232F;
+  resize: none;
+  border: none;
+  outline: none;
+  color: #EDECEE;
+  line-height: 1.5rem;
+  height: 24rem;
+  width: 35rem;
+  overflow-y: hidden;
+  font-size: 0.9rem;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400;
+}
+
+.editor__code-row {
+  height: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  color: #EDECEE;
+}
+
+.editor__result {
+  width: 25rem;
+  height: 25rem;
+  background-color: #36343D;
+  border-radius: 0.625rem;
+  margin-left: 0.0375rem;
+}
+
+.editor__grid {
+  position: absolute;
+  width: 25rem;
+  height: 25rem;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  border: 0.09375rem solid #B7B2B2;
+}
+
+.editor__horizontal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  display: flex;
+  gap: 1.6875rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.editor__horizontal .line:first-child {
+  opacity: 0;
+}
+
+.editor__vertical {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  display: flex;
+  gap: 1.6875rem;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.editor__vertical .line:first-child {
+  opacity: 0;
+}
+
+.editor__ant {
+  width: 25rem;
+  height: 25rem;
+  position: absolute;
+}
+
+.ant {
+  position: absolute;
+  top: 12.05rem;
+}
+
+.log {
+  width: 71.6rem;
+  height: 10rem;
+  background-color: #302E39;
+  border-radius: 0.625rem;
+  overflow: hidden;
+}
+
+.log__title {
+  position: relative;
+  z-index: 3;
+  font-size: 1.125rem;
+  width: 18rem;
+  height: 2rem;
+  color: FFCA85;
+  padding-left: 1.5rem;
+  padding-top: 0.421875rem;
+  color: #FFCA85;
+  background-color: #302E39;
+  background-image: url("../../mainapp/imgs/logBg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-top-left-radius: 0.625rem;
+}
+
+.log__data {
+  margin-top: -3.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #B7B2B2;
+  height: 13rem;
+  width: 71.6rem;
+  overflow-y: scroll;
+  padding-left: 0.9rem;
+}
+.log__data span:first-child {
+  padding-top: 4rem;
+}
+.log__data span {
+  margin-left: 0.67rem;
+}
+.log__data span:last-child {
+  padding-bottom: 3rem;
+}
+
+.editor__horizontal .line {
+  width: 25rem;
+  height: 0.09375rem;
+  background-color: #4D4D4D;
+}
+.editor__vertical .line {
+  height: 25rem;
+  width: 0.09375rem;
+  background-color: #4D4D4D;
+}
+.editor__code-row.active .line {
+  width: 8px;
+  height: 1rem;
+  background-color: #B7B2B2;
+  -webkit-animation-name: blink;
+          animation-name: blink;
+  -webkit-animation-duration: 1000ms;
+          animation-duration: 1000ms;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+.log .line {
+  width: 100%;
+  height: 0.05rem;
+  background: rgba(168, 168, 168, 0.4);
+}
+
+@-webkit-keyframes blink {
+  50%, 99% {
+    opacity: 0;
+  }
+  49%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50%, 99% {
+    opacity: 0;
+  }
+  49%, 100% {
+    opacity: 1;
+  }
+}

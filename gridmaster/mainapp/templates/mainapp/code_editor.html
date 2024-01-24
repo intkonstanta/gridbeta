@@ -1,0 +1,83 @@
+{% extends 'mainapp/layout_mainapp.html' %}
+{% load static %}
+{% block content %}
+<div class="main-title">
+    <span class="main-title__category">Project editor</span>
+    <div class="line"></div>
+    <span class="main-title__name">Algorithm_beta_01</span>
+</div>
+
+<div class="editor">
+    <section>
+        <div class="editor__buttons">
+            <div class="editor__buttons-code">
+                <img src="{% static 'mainapp/imgs/stop.svg' %}" alt="stop">
+                <img src="{% static 'mainapp/imgs/start.svg' %}" alt="start">
+            </div>
+            <div class="editor__buttons-save">
+                <img src="{% static 'mainapp/imgs/saveFile1.svg' %}" alt="">
+                <img src="{% static 'mainapp/imgs/saveFile2.svg' %}" alt="">
+            </div>
+            <img src="{% static 'mainapp/imgs/close.svg' %}" alt="" style="width: 1.25rem; cursor: pointer;">
+        </div>
+
+
+
+        <div class='editor__wrapper'>
+            <div class="editor__code">
+                <div class="editor__code-numrows">
+                    <div>1</div>
+                </div>
+                <textarea name="" id="code-area" oninput="editTextarea(this)" cols='100' onkeydown="if(event.keyCode===9){
+                                let v=this.value,s=this.selectionStart,e=this.selectionEnd;
+                                this.value=v.substring(0, s)+'\t'+v.substring(e);
+                                this.selectionStart=this.selectionEnd=s+1;
+                                return false;}" spellcheck="false"></textarea>
+
+            </div>
+        </div>
+
+
+
+
+        <div class="editor__result">
+            <div class="editor__grid">
+                <div class="editor__horizontal">
+
+                </div>
+                <div class="editor__vertical">
+
+                </div>
+            </div>
+            <div class="editor__ant">
+                <img src="{% static 'mainapp/imgs/ant.svg' %}" alt="" class='ant'>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="log">
+
+        <div class="log__title">Log</div>
+
+        <div class="line"></div>
+
+
+        <div class="log__data">
+            <span> Lorem ipsum dolor sit amet</span>
+            <span> Lorem ipsum dolor sit amet</span>
+            <span> Lorem ipsum dolor sit amet</span>
+            <span> Lorem ipsum dolor sit amet</span>
+            <span> Lorem ipsum dolor sit amet</span>
+            <span> Lorem ipsum dolor sit amet</span>
+            <span> Lorem ipsum dolor sit amet</span>
+            <span> Lorem ipsum dolor sit amet</span>
+            <span> Lorem ipsum dolor sit amet</span>
+            <span> Lorem ipsum dolor sit amet</span>
+            <span> Lorem ipsum dolor sit amet</span>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
