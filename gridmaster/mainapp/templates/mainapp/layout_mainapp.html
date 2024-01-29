@@ -42,7 +42,7 @@
                         <div class='account-menu__dots'>
                             <img src="{% static 'mainapp/imgs/circles.png' %}">
                         </div>
-                        <span class='account-menu__name invisible'>IntSquad</span>
+                        <span class='account-menu__name invisible'>{{request.user}}</span>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
                         <span onclick="event.stopPropagation()">Site <br>settings</span>
                     </div>
                     <div class="account-menu__logout" onclick="event.stopPropagation()">
-                        <span>Logout</span>
+                        <span><a href="{% url 'logout' %}" style = "text-decoration: none; color: #CD5757 ; font-weight: 500">Logout</a></span>
                         <img src="{% static 'mainapp/imgs/logout.svg' %}" alt="">
                     </div>
                 </div>

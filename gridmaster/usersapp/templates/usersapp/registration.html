@@ -15,27 +15,37 @@
         <div class="registration__title">Registration</div>
     </div>
 
-    <div class="registration__main">
-        <form class="registration__input-wrapper">
+
+    <form method="POST" action="" class="registration__main">
+        {% csrf_token %}
+        <div class="registration__input-wrapper">
             <span>Username:</span>
-            <input type="text" placeholder="Username">
-        </form>
-        <form class="registration__input-wrapper">
+            {{form.username}}
+        </div>
+        <div class="registration__input-wrapper">
             <span>Email:</span>
-            <input type="text" placeholder="Email">
-        </form>
-        <form class="registration__input-wrapper">
+            {{form.email}}
+        </div>
+        <div class="registration__input-wrapper">
             <span>Password:</span>
-            <input type="password" placeholder="Password">
-        </form>
-        <form class="registration__input-wrapper">
+            {{form.password1}}
+        </div>
+        <div class="registration__input-wrapper">
             <span style='padding-top: 0'>Repeat <br>password:</span>
-            <input type="password" placeholder="Repeat">
-        </form>
+            {{form.password2}}
+        </div>
+
         <div class="buttons-wrapper">
             <button class='button-continue'>Continue</button>
         </div>
+    </form>
+    {% for message in messages %}
+        <p id="messages">{{message}}</p>
+    {% endfor %}
 
+    <div>
+        <span onclick = "document.location = '{% url 'login' %}'" class="login__forgot" >Have account?</span>
     </div>
+
 </div>
 {% endblock %}

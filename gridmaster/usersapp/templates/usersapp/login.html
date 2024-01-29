@@ -15,24 +15,24 @@
         <div class="login__title">Login</div>
     </div>
 
-    <div class="login__main">
+    <form method="POST" action="" class="login__main">
+        {% csrf_token %}
         <div class="login__input-wrapper">
-            <span>Email:</span>
-            <input type="text" placeholder="Email">
+            <span>username:</span>
+            <input type="username" name='username' class="form-control" placeholder="username">
         </div>
         <div class="login__input-wrapper">
-            <span>Password:</span>
-            <input type="password" placeholder="Password">
+            <span>password:</span>
+            <input type="password" name='password' class="form-control" placeholder="password">
         </div>
         <div class="buttons-wrapper">
-            <button class='button-continue'>Continue</button>
-            <span>or</span>
-            <button class='button-registration'>Registration</button>
+            <button class='button-continue' value="Login" type="submit">Continue</button>
         </div>
-    </div>
+         
+    </form>
 
     <div class="login__footer">
-        <div class="login__forgot">Forgot password?</div>
+        <span onclick = "document.location = '{% url 'registration' %}'" class="login__forgot" >Don't have account?</span>
     </div>
 </div>
 {% endblock %}
