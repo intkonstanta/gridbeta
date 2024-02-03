@@ -51,6 +51,7 @@ footer {
 main {
   margin-left: 7rem;
   margin-top: 1.25rem;
+  margin-bottom: 2rem;
   min-height: calc(100vh - 4rem);
 }
 

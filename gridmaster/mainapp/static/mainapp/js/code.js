@@ -90,6 +90,6 @@ function editTextarea(textarea) {
 //     }
 //     wrap.style.overflowY = 'hidden'
 // }
-window.onload = () => {
-    document.querySelector('#code-area').value = '';
-}
+// window.onload = () => {
+//     document.querySelector('#code-area').value = '';
+// }
