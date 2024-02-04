@@ -5,15 +5,18 @@
 <div class="main-title">
     <span class="main-title__category">Project Manager</span>
     <div class="line"></div>
-    <span class="main-title__name">IntSquad</span>
+    <span class="main-title__name">{{ user }}</span>
 
 </div>
 
 <div class="menu">
     <div class="files">
-        <div class="files__title">My files</div>
+        <div class="files__title">My projects</div>
 
         <form class='files__table-wrapper'>
+            {% if projects is None %}
+            <span>You haven't created any projects yet...</span>
+            {% else %}
             <table>
                 <thead>
                     <tr>
@@ -24,7 +27,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     {% for project in projects %}
                         <tr method="POST" name="csrf" 
                         
@@ -35,11 +37,11 @@
                             <td>{{ project.description }}</td>
                         </tr>
                     {% endfor %}
-<!--   csrf='{% csrf_token %}'-->
 
                 </tbody>
             </table>
         </form>
+        {% endif %}
         
         <div class="files__buttons">
             <div class="files__create">

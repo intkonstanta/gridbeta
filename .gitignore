@@ -1,3 +1,6 @@
 .venv/
 *.log
+*.png
+*.svg
+*.sqlite3
 

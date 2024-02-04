@@ -7,13 +7,14 @@ let ant = document.querySelector('.ant')
 
 ant.style.height = gapGridRem;
 ant.style.width = gapGridRem;
-ant.style.top = `${12.6 - gapGrid / 2}rem`
-ant.style.left = `${12.65 - gapGrid / 2}rem`
+ant.style.top = `${12.525 - gapGrid / 2}rem`
+ant.style.left = `${12.55 - gapGrid / 2}rem`
 // ant.style.top = `${(gapGrid * squareCount - gapGrid) / 2 + (squareCount + 1) / 20}rem`
 // ant.style.right = `${(gapGrid * squareCount - gapGrid) / 2 + (3 * squareCount + 3) / 64 - gapGrid / 4}rem`
 horizontal.style.gap = gapGridRem
 vertical.style.gap = gapGridRem
-
+horizontal.style.paddingTop = gapGridRem;
+vertical.style.paddingLeft = gapGridRem
 
 
 for (let i = 0; i < squareCount; i++) {
@@ -69,7 +70,7 @@ function editTextarea(textarea) {
     numRows.style.height = `${1.5 * countRows}rem`;
 
     textarea.style.height = `${1.5 * countRows}rem`;
-    // textarea.style.width = `${0.5 * maxLenRow}rem`;
+    textarea.style.width = `${0.5 * maxLenRow}rem`;
     // document.querySelector('.editor__code-area').style.width = `${0.5 * maxLenRow}rem`;
     if (countRows > numRows.children.length) {
         numRows.innerHTML = '';

@@ -22,13 +22,13 @@
         </div>
 
 
-
+    
         <div class='editor__wrapper'>
             <div class="editor__code">
                 <div class="editor__code-numrows">
                     <div>1</div>
                 </div>
-                <textarea name="" id="code-area" oninput="editTextarea(this)" cols='100' onkeydown="if(event.keyCode===9){
+                <textarea name="" id="code-area" oninput="editTextarea(this)"  onkeydown="if(event.keyCode===9){
                                 let v=this.value,s=this.selectionStart,e=this.selectionEnd;
                                 this.value=v.substring(0, s)+'\t'+v.substring(e);
                                 this.selectionStart=this.selectionEnd=s+1;
@@ -36,7 +36,7 @@
 
             </div>
         </div>
-
+    
 
 
 
