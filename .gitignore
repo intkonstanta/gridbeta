@@ -3,4 +3,5 @@
 *.png
 *.svg
 *.sqlite3
-
+*.vscode
+*.pyc

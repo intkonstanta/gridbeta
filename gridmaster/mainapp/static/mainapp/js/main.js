@@ -7,6 +7,12 @@ document.querySelectorAll('tr').forEach((elem) => {
 lastActive = 0;
 function preopenFile(tr) {
     let tds = tr.querySelectorAll('td')
+    if(tds.length == 0){
+        tr = tr.parentElement
+        console.log(tr)
+        // если 0, то нажали на span about
+        tds = tr.querySelectorAll('td')
+    }
     if (tds[0].textContent == '#' || tds[0].textContent == lastActive) return;
 
     document.querySelector(".files__table-wrapper").querySelectorAll('tr')[lastActive].classList.remove('active');
@@ -84,6 +90,8 @@ canvas.style.width = '5rem'
 
 
 async function openPreview(elem){
+
+
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -99,13 +107,12 @@ async function openPreview(elem){
         }
         return cookieValue;
       }
+      
     let title = elem.children[1].textContent;
     let file = {
         'title': title,
     }
     let csrf = getCookie('csrftoken');
-
-    console.log(file)
     let response = await fetch('/mainapp/code_preview/', {
         method: 'POST',
         headers: {
@@ -116,4 +123,56 @@ async function openPreview(elem){
         body: JSON.stringify(file)
       });
     
+    await fetch('/mainapp/code_preview/', {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrf,
+    })
+    .then( response => response.json())
+    .then(info => {
+        let title = document.querySelector('.preview__title');
+        let lastEdit = document.querySelector('.preview__edit');
+        let about = document.querySelector('.preview__about');
+        let size = document.querySelector('.preview__size')
+
+        title.textContent = info.title
+        lastEdit.textContent = `Last edit: ${info['date']}` 
+        about.textContent = info.description
+        size.textContent = `Size: ${info.size} byte`
+
+        code = info.code_preview
+        code = code.split('\n')
+
+        let numCols = document.querySelector('.preview__num-cols')
+        numCols.innerHTML = ""
+
+        let codeText = document.querySelector('.preview__code-text');
+        codeText.innerHTML = ""
+        for (let i = 1; i <= code.length; i++){
+
+            let num = document.createElement('div');
+            num.classList.add('preview__num');
+            num.textContent = i;
+            
+            numCols.append(num)
+
+            let codeRow = document.createElement('div');
+            codeRow.classList.add('preview__code-row');
+            row = code[i-1].replace('  ', '\t')
+            console.log(row.split('\t').length)
+            codeRow.innerHTML = row
+            codeRow.style.paddingLeft = `${0.4 * (row.split('\t').length -1) }rem`
+            // console.log(code[i-1].replace('  ', '\t'))
+            codeText.append(codeRow)
+        }
+
+        })
+    
+
+      
+   
+}
+
+
+function toggleCreateFileMenu(){
+    document.querySelector('.create-menu').classList.toggle('show')
 }

@@ -331,7 +331,8 @@ main {
   color: #FFCA85;
 }
 
-.exit-menu {
+.exit-menu,
+.create-menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -351,7 +352,8 @@ main {
           backdrop-filter: blur(0.125rem);
 }
 
-.exit-menu__content {
+.exit-menu__content
+.create-menu__content {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -367,13 +369,15 @@ main {
   border-radius: 0.5rem;
 }
 
-.exit-menu__icon img {
+.exit-menu__icon img,
+.create-menu__icon img {
   margin: 0.703125rem;
   width: 2rem;
   height: 2rem;
 }
 
-.exit-menu__text {
+.exit-menu__text,
+.create-menu__text {
   text-align: center;
   line-height: 1.25;
   color: #B7B2B2;
@@ -381,7 +385,8 @@ main {
   font-weight: 700;
 }
 
-.exit-menu__buttons {
+.exit-menu__buttons,
+.create-menu__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

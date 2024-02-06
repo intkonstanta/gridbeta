@@ -1,0 +1,16 @@
+{% load static %}
+<form method='post' action="" id="form1">
+  {% csrf_token %}
+    <label for="fname">Title: </label>
+    {{form.creator}}
+    <label for="fname">Title: </label>
+    {{form.title}}
+    <!--input type="text" id="title" name="ntitle"><br><br-->
+    
+    <label for="fname">Description: </label>
+    {{form.description}}
+    <!--input type="text" id="description" name="ndescription"><br><br-->
+
+    <input type="submit" value="Submit">
+
+  </form>

@@ -1,0 +1,27 @@
+{% load static %}
+
+<div class="create-menu">
+    <div class="create-menu__content">
+        <div class="create-menu__icon"><img src="{% static 'mainapp/imgs/question.svg' %}" alt=""></div>
+        <div class="create-menu__text">
+           Create project
+        </div>
+        
+        <form method="POST" action="" class="create__main">
+            {% csrf_token %}
+            <div class="create__input-wrapper">
+                <span>Name:</span>
+                <input type="text">
+            </div>
+            <div class="create__input-wrapper">
+                <span>Description:</span>
+                <input type="text">
+               
+            </div>
+        </form>
+
+        <div class="create-menu__buttons">
+            <button class='create-btn'>Create</button>
+        </div>
+    </div>
+</div>
