@@ -15,16 +15,19 @@
         <div class="reset__title">Reset</div>
     </div>
 
-    <div class="reset__main">
+    <form method="post" class="reset__main">
+        {% csrf_token %}
+        {% for f in form %}
         <div class="reset__text">Enter the email from your <br>account</div>
-        <div class="reset__input-wrapper">
+        <div class="reset__input-wrapper" for="{{ f.id_for_label }}">
             <span>Email:</span>
-            <input type="text" placeholder="Email">
+            {{ f }}
+<!--                <input type="text" placeholder="Email">{{ f.label }}</input>-->
         </div>
+        {% endfor %}
         <div class="buttons-wrapper">
             <button class='button-continue'>Continue</button>
         </div>
-
-    </div>
+    </form>
 </div>
 {% endblock %}

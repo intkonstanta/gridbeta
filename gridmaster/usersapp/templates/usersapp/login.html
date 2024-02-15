@@ -31,8 +31,13 @@
          
     </form>
 
+    <div style="display: flex; justify-content: space-around; width: 100%">
     <div class="login__footer">
         <span onclick = "document.location = '{% url 'registration' %}'" class="login__forgot" >Don't have account?</span>
+    </div>
+    <div class="login__footer">
+        <span onclick = "document.location = '{% url 'password_reset' %}'" style = "color: #CD5757" class="reset__button" >Reset password</span>
+    </div>
     </div>
 </div>
 {% endblock %}

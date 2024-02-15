@@ -4,21 +4,39 @@
 <div class="main-title">
     <span class="main-title__category">Project editor</span>
     <div class="line"></div>
-    <span class="main-title__name">Algorithm_beta_01</span>
+    <span class="main-title__name"> {{ title }} </span>
 </div>
 
 <div class="editor">
     <section>
-        <div class="editor__buttons">
+        <div class = "editor__buttons">
             <div class="editor__buttons-code">
-                <img src="{% static 'mainapp/imgs/stop.svg' %}" alt="stop">
-                <img src="{% static 'mainapp/imgs/start.svg' %}" alt="start">
+                <button class="editor__buttons-code" type="submit" name="stop" onclick = "stop.push(''); trueStop = true">
+                    <img src="{% static 'mainapp/imgs/stop.svg' %}" alt="stop" >
+                </button>
+
+                <button class="editor__buttons-code" name="start" onclick="startAnimationAnt('start')">
+                    <img src="{% static 'mainapp/imgs/start.svg' %}" alt="start">
+                </button>
+                
             </div>
-            <div class="editor__buttons-save">
-                <img src="{% static 'mainapp/imgs/saveFile1.svg' %}" alt="">
-                <img src="{% static 'mainapp/imgs/saveFile2.svg' %}" alt="">
-            </div>
-            <img src="{% static 'mainapp/imgs/close.svg' %}" alt="" style="width: 1.25rem; cursor: pointer;">
+
+
+                <div class="editor__buttons-save">
+                    <button class="editor__buttons-save" name="save" onclick="postCode('save')">
+                        <img src="{% static 'mainapp/imgs/saveFile1.svg' %}" alt="">
+                    </button>
+    
+                    <button class="editor__buttons-save" name="load" onclick = "saveTextareaAsTxt()">
+                        <img src="{% static 'mainapp/imgs/saveFile2.svg' %}" alt="">
+                    </button>
+                    <a class = "show saveTextArea" download = ""></a>
+                </div>
+
+                <button name="save_and_exit" style="background: none; border: none;" onclick="toggleExitAndSave()">
+
+                <img src="{% static 'mainapp/imgs/close.svg' %}" alt="" style="width: 1.25rem; cursor: pointer;">
+            </button>   
         </div>
 
 
@@ -32,7 +50,7 @@
                                 let v=this.value,s=this.selectionStart,e=this.selectionEnd;
                                 this.value=v.substring(0, s)+'\t'+v.substring(e);
                                 this.selectionStart=this.selectionEnd=s+1;
-                                return false;}" spellcheck="false">это код</textarea>
+                                return false;}" spellcheck="false">{{ request.session.file_text1 }}</textarea>
 
             </div>
         </div>
@@ -64,20 +82,28 @@
 
 
         <div class="log__data">
-            <span> Lorem ipsum dolor sit amet</span>
-            <span> Lorem ipsum dolor sit amet</span>
-            <span> Lorem ipsum dolor sit amet</span>
-            <span> Lorem ipsum dolor sit amet</span>
-            <span> Lorem ipsum dolor sit amet</span>
-            <span> Lorem ipsum dolor sit amet</span>
-            <span> Lorem ipsum dolor sit amet</span>
-            <span> Lorem ipsum dolor sit amet</span>
-            <span> Lorem ipsum dolor sit amet</span>
-            <span> Lorem ipsum dolor sit amet</span>
-            <span> Lorem ipsum dolor sit amet</span>
+            
         </div>
 
     </div>
 
 </div>
+
+<div class="exit-menu show" onclick = "toggleExitAndSave()">
+    <div class="exit-menu__cont" onclick="event.stopPropagation()">
+        <div class="exit-menu__icon"><img src="{% static 'mainapp/imgs/question.svg' %}" alt=""></div>
+        <div class="exit-menu__text">
+            Changes have been made <br>to the project, do you want<br> to save before quitting?
+        </div>
+        <div class="exit-menu__buttons">
+        <button class='save-btn' onclick="saveExit('save_and_exit_redirect')" >Save and exit</button>
+        <span>or</span>
+        <form method="POST"  action="{% url 'project_manager' %}">
+            {% csrf_token %}        
+            <button class='exit-btn' name="exit" type="submit" action="{% url 'project_manager' %}">Only exit</button>
+        </form>
+        <div>
+    </div>
+</div>
+
 {% endblock %}

@@ -8,16 +8,14 @@
     <span class="main-title__name">{{ user }}</span>
 
 </div>
-
-
 <div class="create-menu show" onclick = 'toggleCreateFileMenu()'>
     <div class="create-menu__content" onclick = 'event.stopPropagation()'>
-        <div class="create-menu__icon"><img src="{% static 'mainapp/imgs/question.svg' %}" alt=""></div>
+        <div class="create-menu__icon"><img src="{% static 'mainapp/imgs/description.svg' %}" alt=""></div>
         <div class="create-menu__text">
            Create project
         </div>
         
-        <form method="POST" action="" class="create__main">
+        <form method="POST" action="" class="create__main" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="create__input-wrapper">
                 <span>Name:</span>
@@ -27,14 +25,19 @@
                 <span>Description:</span>
                 {{form.description}}
             </div>
+        
+            <div class="create__browse">
+                <span>Load file:</span>
+                <label for="upload-file" class = "upload-label">Browse...</label>
+                <input name="file" type="file" id = "upload-file" class = "show" oninput="labelFile()"></input>
+            </div>
+
             <div class="create-menu__buttons">
-                <button type = 'submit' class='create-btn'>Create</button>
+                <button type='submit' class='create-btn' name="create">Create</button>
             </div>
         </form>
     </div>
 </div>
-
-
 
 <div class="menu">
     <div class="files">
@@ -80,10 +83,10 @@
                 <img src="{% static 'mainapp/imgs/create.svg' %}" alt="">
                 <span>Create new project...</span>
             </button>
-            <button  class="files__import">
+            <!-- <button  class="files__import">
                 <img src="{% static 'mainapp/imgs/import.svg' %}" alt="">
                 <span>Import file...</span>
-            </button>
+            </button> -->
             <button  class="files__examples">
                 <img src="{% static 'mainapp/imgs/examples.svg' %}" alt="">
                 <span>Examples</span>
@@ -97,12 +100,12 @@
         <div class="preview__wrap" >
     <div>Select a project from the table on the right to
          display the preview...</div>
-    <svg width="72" height="30" viewBox="0 0 50 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="72" height="20" viewBox="0 0 50 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0.585786 13.5858C-0.195262 14.3668 -0.195262 15.6332 0.585786 16.4142L13.3137 29.1421C14.0948 29.9232 15.3611 29.9232 16.1421 29.1421C16.9232 28.3611 16.9232 27.0948 16.1421 26.3137L4.82843 15L16.1421 3.68629C16.9232 2.90524 16.9232 1.63891 16.1421 0.857864C15.3611 0.0768158 14.0948 0.0768158 13.3137 0.857864L0.585786 13.5858ZM72 13L2 13V17L72 17V13Z" fill="#A8A8A8" fill-opacity="0.82"/>
         </svg>
         
     </div>
-        <section style="display: flex;flex-direction: row;flex-flow: wrap;    display:none;" >
+        <section style="display: flex;flex-direction: row;flex-flow: wrap;" class="show prev-section" >
             <form class="preview__info">
             <form class="preview__code">
                 <div class="preview__num-cols">
@@ -116,16 +119,21 @@
                 </div>
             </form>
                 <div class="preview__code-info">
-                    <span class='preview__edit'>Last edit: {{ date | date:"d.m.Y" }}</span>
+                    <span class='preview__edit' name="edit">Last edit: {{ date | date:"d.m.Y" }}</span>
                     <span class='preview__size'>Size: {{ size }}</span>
                     <span class='preview__about'>{{ description }}</span>
                 </div>
             </form>
             <div class="preview__buttons">
-                <button class="preview__edit">Edit</button>
-                <button class="preview__load">Load</button>
-                <button class="preview__copy">Copy</button>
-                <button class="preview__delete">Delete</button>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                        <button type = 'submit' class="preview__edit" name="edit">Edit</button>
+                        <button type = 'submit' class="preview__load" name="load" onclick = "event.preventDefault">Load</button>
+                        <a class = "show load-a" download = "file.txt">fdsfd</a> 
+                        <button type = 'submit' class="preview__copy" name="copy">Copy</button>
+                        <button type = 'submit' class="preview__delete" name="delete">Delete</button>
+                </form>
+            
             </div>
         </section>
     </div>
@@ -153,7 +161,7 @@
             </div>
 
             <div class='cloud__text'>
-                {% if flag_free_place_valid %}
+                {% if flag_no_free_place %}
                 <div>
                     <span class='procent'>There is no free space left in your account's cloud storage!!!</span> 
                 </div>
@@ -170,4 +178,6 @@
         </div>
     </div>
 </div>
+
+
 {% endblock %}

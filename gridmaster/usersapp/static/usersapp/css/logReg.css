@@ -161,7 +161,9 @@ body {
 .login__footer {
   margin-top: 6.25rem;
 }
-
+.registration__footer{
+  margin-top: 2.2rem;
+}
 .login__forgot {
   font-size: 0.85rem;
   color: #CD5757;

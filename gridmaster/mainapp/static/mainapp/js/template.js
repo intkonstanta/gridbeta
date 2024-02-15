@@ -3,9 +3,11 @@ let isClose = true;
 function userMenuToggle() {
     if (isClose == true) {
         userMenuOpen();
+        document.onclick = userMenuToggle;
         return
     }
     userMenuClose();
+    document.onclick = "";
 }
 
 function userMenuOpen() {

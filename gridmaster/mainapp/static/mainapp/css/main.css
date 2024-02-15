@@ -128,7 +128,7 @@ body::-webkit-scrollbar {
       -ms-flex-pack: center;
           justify-content: center;
   gap: 0.375rem;
-  padding: 1rem 0rem 1ю25;
+  padding: 1.5rem 0rem 1.25rem 0;
 }
 .files__buttons button {
   text-align: left;
@@ -484,7 +484,9 @@ body::-webkit-scrollbar {
   margin: 1.5rem 1.125rem 0.5rem;
 }
 
-
+.preview__wrap svg{
+  margin-right: 0.75rem;
+}
 
 .create-menu {
   display: -webkit-box;
@@ -516,8 +518,8 @@ body::-webkit-scrollbar {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 25.73rem;
-  height: 17.75rem;
+  width: 26.5rem;
+  height: 19rem;
   background-color: #36343D;
   margin-bottom: 15vh;
   border-radius: 0.5rem;
@@ -634,4 +636,38 @@ body::-webkit-scrollbar {
   background-color: #4D4D4D;
   border-radius: 0.28125rem;
   color:#7FE4C2;
+}
+
+.create__browse{
+  display: flex;
+  width: 100%;
+}
+
+.create__browse span{
+  width: 6rem;
+  text-align: end;
+  color: #B7B2B2;
+  font-weight: 500;
+  margin-right: 0.5rem;
+  padding-top: 0.35rem;
+}
+.create__browse label{
+  width: 15.5rem;
+  height: 1.9rem;
+  outline: none;
+  background-color: #4D4D4D;
+  color: rgba(168, 168, 168, 0.82);
+  border-radius: 0.28125rem;
+  border: none;
+  font-weight: 500;
+  padding: 0.35rem;
+
+  line-height: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.or{
+  font-size: 0.8rem;
+  color: rgba(168, 168, 168, 0.82);
 }

@@ -47,6 +47,7 @@ function preopenFile(tr) {
 // диаграммма
 
 let procent = Math.floor(100 - document.querySelector('.procent').textContent);
+procent = isNaN(procent) ? 100 : procent
 let divProcent = document.querySelector('.cloud__procent');
 divProcent.textContent = `${procent}%`;
 
@@ -88,6 +89,16 @@ const diagram = new Chart(canvas, config)
 canvas.style.height = '5rem'
 canvas.style.width = '5rem'
 
+function toggleCreateFileMenu(){
+    document.querySelector('.create-menu').classList.toggle('show')
+}
+
+async function labelFile(){
+    let file = document.querySelector('#upload-file');
+    let label = document.querySelector('.upload-label')
+    fileName = await file.files[0].name;
+    label.textContent = fileName;
+}
 
 async function openPreview(elem){
 
@@ -123,17 +134,46 @@ async function openPreview(elem){
         body: JSON.stringify(file)
       });
     
+
     await fetch('/mainapp/code_preview/', {
         'Content-Type': 'application/json',
         'X-CSRFToken': csrf,
     })
     .then( response => response.json())
     .then(info => {
+        x = info;
+        document.querySelector('.preview__wrap').classList.add('show');
+        document.querySelector('.prev-section').classList.remove('show')
         let title = document.querySelector('.preview__title');
         let lastEdit = document.querySelector('.preview__edit');
         let about = document.querySelector('.preview__about');
-        let size = document.querySelector('.preview__size')
+        let size = document.querySelector('.preview__size');
 
+        let load = document.querySelector(".preview__load");
+        console.log(info)
+        load.addEventListener("click", () =>{
+            event.preventDefault()
+            url = x.download_url
+            fetch( url, {
+                method: 'get',  
+                mode:'no-cors',
+                referrerPolicy: 'no-referrer'
+            })
+            .then(res => res.blob())
+            .then(res => {
+                console.log(res)
+                a = document.querySelector('.load-a')
+                a.download = "file.txt"
+                url = URL.createObjectURL(res)
+                a.href = url
+                // a.target = '_blank'
+                a.click();
+              
+                window.URL.revokeObjectURL(url)
+            })
+        })
+
+        console.log(info)
         title.textContent = info.title
         lastEdit.textContent = `Last edit: ${info['date']}` 
         about.textContent = info.description
@@ -158,7 +198,6 @@ async function openPreview(elem){
             let codeRow = document.createElement('div');
             codeRow.classList.add('preview__code-row');
             row = code[i-1].replace('  ', '\t')
-            console.log(row.split('\t').length)
             codeRow.innerHTML = row
             codeRow.style.paddingLeft = `${0.4 * (row.split('\t').length -1) }rem`
             // console.log(code[i-1].replace('  ', '\t'))
@@ -170,9 +209,4 @@ async function openPreview(elem){
 
       
    
-}
-
-
-function toggleCreateFileMenu(){
-    document.querySelector('.create-menu').classList.toggle('show')
 }

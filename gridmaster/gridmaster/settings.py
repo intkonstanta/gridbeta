@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-%eaq+k2@oekz*6nti@@rlk&seva*vesy2px4=7_1452+lu)g%8
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#SESSION_SAVE_EVERY_REQUEST = True
 
 ALLOWED_HOSTS = []
 
@@ -130,3 +131,37 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/logging.log'
+        },
+    },
+    'loggers': {
+        'mainapp': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        }
+    }
+}
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = 'reset.gridmaster@gmail.com'
+EMAIL_HOST_PASSWORD = 'ajjefndqfbfcqjye'
+
+EMAIL_SERVER = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = ['egdstudioss@gmail.com']
