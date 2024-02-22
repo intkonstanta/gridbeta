@@ -1,6 +1,6 @@
 # GridMaster 
 
-РАБОЧАЯ ССЫЛКА НА ВИДЕО С ПРОВЕРКОЙ РАБОТЫ: https://drive.google.com/file/d/16PYzTNRxYRyIoJ8V-Cv-C5MOfW5sNzjt/view?usp=drive_link
+РАБОЧАЯ ССЫЛКА НА ВИДЕО С ПРОВЕРКОЙ РАБОТЫ: https://rutube.ru/video/private/5c49ccf2d2c67f64ee16f827a4920d05/?p=fWg1LbipmckLBL2VmRa5cA
 
 GridMaster по своей задумке и функционалу - это онлайн интерпритатор команд, управляющих движениями исполнителя по двумерной сетке. 
 
